@@ -180,15 +180,15 @@ export default function DrillsPage() {
           </div>
 
           {/* Filter Section */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div className="flex items-center gap-2">
               <Filter className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-semibold">Filter Drills</h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Button
                 onClick={() => setShowAddForm(true)}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Drill
@@ -306,7 +306,7 @@ export default function DrillsPage() {
       {/* Drill Detail Modal */}
       {selectedDrill && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setSelectedDrill(null)}
         >
           <motion.div
@@ -372,7 +372,7 @@ export default function DrillsPage() {
                 <p className="text-muted-foreground leading-relaxed">{selectedDrill.description}</p>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-border flex gap-3">
+              <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={() => openEditForm(selectedDrill)}
                   className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
@@ -397,7 +397,7 @@ export default function DrillsPage() {
       {/* Add/Edit Drill Form Modal */}
       {(showAddForm || editingDrill) && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => {
             setShowAddForm(false);
             setEditingDrill(null);
@@ -505,7 +505,7 @@ export default function DrillsPage() {
                   </p>
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <Button
                     onClick={editingDrill ? handleEditDrill : handleAddDrill}
                     className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"

@@ -246,15 +246,15 @@ export default function Home() {
       {/* Filter Section */}
       <div className="border-b border-border bg-card/30">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div className="flex items-center gap-2">
               <Filter className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-semibold">Filter Techniques</h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Button
                 onClick={() => setShowAddForm(true)}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Technique
@@ -425,7 +425,7 @@ export default function Home() {
       {/* Detail Modal */}
       {selectedTechnique && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setSelectedTechnique(null)}
         >
           <motion.div
@@ -540,7 +540,7 @@ export default function Home() {
                 </div>
               )}
 
-              <div className="mt-6 pt-6 border-t border-border flex gap-3">
+              <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={() => openEditForm(selectedTechnique)}
                   className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
@@ -565,7 +565,7 @@ export default function Home() {
       {/* Add/Edit Technique Form Modal */}
       {(showAddForm || editingTechnique) && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => {
             setShowAddForm(false);
             setEditingTechnique(null);
@@ -575,8 +575,8 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
+            className="bg-card border border-border rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
-            className="bg-card rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-border"
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
@@ -777,7 +777,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <Button
                     onClick={editingTechnique ? handleEditTechnique : handleAddTechnique}
                     className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
